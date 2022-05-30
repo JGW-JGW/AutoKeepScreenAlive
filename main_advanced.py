@@ -2,20 +2,15 @@
 # -*- coding: utf-8 -*-
 # Time  : 2022-05-25 11:49
 # Author: jgw
-from pprint import pprint
 from typing import List, Dict, Union
-import random as rd
 import math
-import datetime as dt
-import re
-from abc import ABCMeta, abstractmethod
 import pyautogui
 import win32con
 import win32gui
 from time import sleep
-import logging
 from sys import stdin
 import json
+import os
 
 """
 给定句柄类和名称，在指定的窗口间进行切换，防止进入屏保，升级版，允许根据配置文件进行任务
@@ -105,7 +100,7 @@ for i in range(width_total):
 	print('=', end='')
 print()
 
-conf = "plan.json"
+conf = os.path.join(os.path.dirname(os.path.abspath(__file__)), "plan.json")
 
 with open(conf, mode="r", encoding="utf-8") as f:
 	plan = json.load(f)
@@ -154,10 +149,10 @@ while True:
 		total_click_num = len(click_coordinates)
 
 		# 根据每个点击的配置进行操作
-		for index in range(total_click_num):
-			x = click_coordinates[index]['x']
-			y = click_coordinates[index]['y']
-			time_before_click = time_before_each_click[index]
+		for i in range(total_click_num):
+			x = click_coordinates[i]['x']
+			y = click_coordinates[i]['y']
+			time_before_click = time_before_each_click[i]
 
 			# 点击前等待
 			sleep(time_before_click)
@@ -165,7 +160,7 @@ while True:
 			# 点击动作
 			move_and_click(x, y)
 
-			print(f"INFO: click [{index + 1:d}]: x = {x:4d}, y = {y:4d}")
+			print(f"INFO: click [{i + 1:d}]: x = {x:4d}, y = {y:4d}")
 
 		# 最终等待
 		sleep(time_after_final_click)
