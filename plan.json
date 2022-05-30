@@ -1,0 +1,14 @@
+{
+  "Chrome_WidgetWin_1||百度一下，你就知道 - Google Chrome": {
+    "click_flag": true,
+    "click_coordinates": [{"x": 138, "y": 81}],
+    "time_before_each_click": [5],
+    "time_after_final_click": 10
+  },
+  "Chrome_WidgetWin_1||(64 封私信 / 88 条消息) 首页 - 知乎 - Google Chrome": {
+    "click_flag": true,
+    "click_coordinates": [{"x": 138, "y": 81}],
+    "time_before_each_click": [1],
+    "time_after_final_click": 2
+  }
+}
